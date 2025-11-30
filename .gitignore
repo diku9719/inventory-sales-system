@@ -1,0 +1,31 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+*.log
+.vs/
+.vscode/
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Excel files (generated)
+exports/*.xlsx
+
+# Node modules (if using npm)
+node_modules/
+
+# Environment files
+.env
+appsettings.Development.json
+
+# OS files
+.DS_Store
+Thumbs.db
