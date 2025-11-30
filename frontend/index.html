@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory & Sales System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Inventory & Sales Management</h1>
+            <nav>
+                <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+                <button class="nav-btn" data-page="products">Products</button>
+                <button class="nav-btn" data-page="sales">Sales</button>
+                <button class="nav-btn" data-page="reports">Reports</button>
+            </nav>
+        </header>
+
+        <main id="main-content">
+            <!-- Dashboard Page -->
+            <div id="dashboard-page" class="page active">
+                <h2>Dashboard Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Products</h3>
+                        <p class="stat-value" id="total-products">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Low Stock Items</h3>
+                        <p class="stat-value alert" id="low-stock">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Sales</h3>
+                        <p class="stat-value" id="total-sales">$0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Sales Today</h3>
+                        <p class="stat-value" id="sales-today">$0</p>
+                    </div>
+                </div>
+                <div class="low-stock-alerts">
+                    <h3>⚠️ Low Stock Alerts</h3>
+                    <div id="low-stock-list"></div>
+                </div>
+            </div>
+
+            <!-- Products Page -->
+            <div id="products-page" class="page">
+                <div class="page-header">
+                    <h2>Product Management</h2>
+                    <button class="btn-primary" onclick="showAddProductModal()">+ Add Product</button>
+                </div>
+                <div class="table-container">
+                    <table id="products-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Stock</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Sales Page -->
+            <div id="sales-page" class="page">
+                <div class="page-header">
+                    <h2>Sales Records</h2>
+                    <button class="btn-primary" onclick="showAddSaleModal()">+ Record Sale</button>
+                </div>
+                <div class="table-container">
+                    <table id="sales-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Total</th>
+                                <th>Date</th>
+                                <th>Customer</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sales-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reports Page -->
+            <div id="reports-page" class="page">
+                <h2>Reports & Analytics</h2>
+                <div class="report-controls">
+                    <label>Start Date: <input type="date" id="report-start"></label>
+                    <label>End Date: <input type="date" id="report-end"></label>
+                    <button class="btn-primary" onclick="generateReport()">Generate Report</button>
+                </div>
+                <div id="report-output"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal()"></div>
+    <div id="product-modal" class="modal">
+        <h3>Add Product</h3>
+        <form id="product-form">
+            <input type="text" id="product-name" placeholder="Product Name" required>
+            <input type="text" id="product-category" placeholder="Category" required>
+            <textarea id="product-description" placeholder="Description"></textarea>
+            <input type="number" id="product-price" placeholder="Price" step="0.01" required>
+            <input type="number" id="product-stock" placeholder="Stock Quantity" required>
+            <input type="number" id="product-threshold" placeholder="Low Stock Threshold" value="10">
+            <div class="modal-actions">
+                <button type="submit" class="btn-primary">Save</button>
+                <button type="button" class="btn-secondary" onclick="closeModal()">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
